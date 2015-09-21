@@ -1,0 +1,6 @@
+
+<%= simple_form_for @account_transaction do |f| %>
+  <%= f.association :account %>
+  <%= f.input :amount %>
+  <%= f.submit 'Create Transaction'%>
+<% end %>

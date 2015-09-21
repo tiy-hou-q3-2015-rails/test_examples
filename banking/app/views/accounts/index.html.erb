@@ -1,0 +1,21 @@
+<h1>Accounts</h1>
+
+<%= link_to 'New Transaction', new_transaction_path %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td><%= number_to_currency account.balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
