@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get "/sign_up" => 'users#new', as: :sign_up
   post "/sign_up" => 'users#create', as: :users
 
+  post "/users/:id/follow" => "following#create", as: :follow_user
+  post "/users/:id/stop-following" => "following#delete", as: :stop_following_user
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,2 +1,21 @@
 <h1>Links#index</h1>
-<p>Find me in app/views/links/index.html.erb</p>
+
+<% @people.each do |user| %>
+  <h2><%= user.email %></h2>
+
+  <% user.links.each do |link| %>
+    <p><%= link.url %></p>
+  <% end %>
+<% end %>
+
+<div class="all_users">
+  <% @users.each do |user| %>
+    <li>
+      <% if @current_user.following? user %>
+        <%= link_to "Stop Following #{user.email}", stop_following_user_path(id: user.id), method: :post %>
+      <% else %>
+        <%= link_to "Follow #{user.email}", follow_user_path(id: user.id), method: :post %>
+      <% end %>
+    </li>
+  <% end %>
+</div>

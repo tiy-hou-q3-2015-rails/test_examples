@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user!
-    if @current_user.nil?
-      redirect_to sign_in_path
-    end
+    redirect_to sign_in_path unless user_signed_in?
   end
 
   def sign_in user
