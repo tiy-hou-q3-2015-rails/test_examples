@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     # authenticate the password
     if user.present? && user.authenticate(password)
       # session & redirect or render
-      session[:user_id] = user.id
+      sign_in user
       redirect_to root_path
     else
       render :new
@@ -22,5 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    sign_out
+    redirect_to root_path, notice: "You are now signed out. Thank you come again"
   end
 end

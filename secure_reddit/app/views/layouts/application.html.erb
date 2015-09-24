@@ -8,6 +8,22 @@
 </head>
 <body>
 
+  <nav>
+    <ul>
+      <% if user_signed_in? %>
+        <li>Oh hai <%= @current_user.email %></li>
+        <li><%= link_to 'Sign Out', sign_out_path, method: :post %></li>
+      <% else %>
+
+      <% end %>
+    </ul>
+  </nav>
+
+  <% if notice %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
+
+
 <%= yield %>
 
 </body>

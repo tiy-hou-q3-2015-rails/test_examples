@@ -12,4 +12,18 @@ class ApplicationController < ActionController::Base
       redirect_to sign_in_path
     end
   end
+
+  def sign_in user
+    session[:user_id] = user.id
+  end
+
+  def sign_out
+    session.delete :user_id
+  end
+
+  def user_signed_in?
+    @current_user.present?
+  end
+  helper_method :user_signed_in?
+
 end
